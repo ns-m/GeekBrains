@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Note;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -61,6 +63,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+//        $model = new Note();
+////        $model->setAttributes([
+////            'id' => 5,
+////            'name' => 'foo',
+////        ]);
+//        $model->setAttributes($_GET);
+//
+////        d($model->toArray());
+//
+////        VarDumper::dump($model->getAttributes());
+//
+//        if (!$model->validate()){
+//            return VarDumper::dumpAsString($model->getErrors());
+//        }
+//        return 'good';
         return $this->render('index');
     }
 
