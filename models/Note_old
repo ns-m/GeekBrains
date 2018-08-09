@@ -1,0 +1,48 @@
+<?php
+
+
+namespace app\models;
+
+
+use yii\base\Model;
+
+class Note extends Model
+{
+    public $id;
+    public $name;
+
+    public function rules(): array
+    {
+        return [
+            ['id', 'integer'],
+            [['id', 'name'], 'required'],
+            ['name', 'string', 'min' => 3],
+            ['id', 'validateMy'],
+        ];
+    }
+
+    /**
+     * @return void
+     */
+    public function validateMy(): void
+    {
+        if ($this->id < 5){
+            $this->addError('id', 'ID failed!!!');
+        }
+    }
+
+    public function attributeLabels(): array
+    {
+        return [
+            'id'=>'ИД',
+            'name' => 'Название заметки',
+        ];
+    }
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        return [
+            'id',
+            'name',
+        ];
+    }
+}
