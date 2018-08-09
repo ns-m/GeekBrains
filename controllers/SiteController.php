@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Event;
 use app\models\Note;
 use Yii;
 use yii\filters\AccessControl;
@@ -78,6 +79,52 @@ class SiteController extends Controller
 //            return VarDumper::dumpAsString($model->getErrors());
 //        }
 //        return 'good';
+//        $db = \Yii::$app->getDb();
+//        $id = 2;
+////        $db_foo = \Yii::$app->db_foo;
+////        d($db, $db_foo);
+////        $result = $db
+////            ->createCommand('SELECT * FROM event WHERE id = :id')
+////            ->bindParam(':id', $id)
+////            ->queryAll()
+////            ;
+//        $result = $db->queryBuilder->
+
+//        print_r($result);
+//        $result = Event::find()->all();
+//        $result = Event::find()
+////            ->andWhere('id=2')
+////            ->andWhere(['id' =>2])
+//              ->andWhere([
+//                    'or',
+//                    ['=', 'id', 1],
+//                    ['=', 'id', 2],
+//                ])
+//            ->one();
+////        print_r($result);
+//        echo $result->name;
+//
+//        exit;
+//        return '';
+//        foreach (Event::find()->each() as $model){
+//            print_r($model->name . '<br/>');
+//        }
+//        exit;
+//        $model = Event::findOne(['id' => 3]);
+////        $model->doCoolThing();
+////        die;
+//        $model->name = 'Model 3';
+//        $model->save();
+//        $model = new Event();
+//        $model->setAttributes([
+//            'name'=>'Model X',
+//            'start_at'=>date('Y-m-d'),
+//            'end_at'=>date('Y-m-d')
+//        ]);
+//        $model->save();
+//        Event::find()->andFilterWhere(['id'=>null])->all();
+
+
         return $this->render('index');
     }
 

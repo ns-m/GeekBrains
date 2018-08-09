@@ -10,7 +10,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -44,10 +44,19 @@ $config = [
             ],
         ],
         'db' => $db,
+//        'db_foo'=>[
+//            'class' => 'yii\db\Connection',
+//            'dsn' => 'mysql:host=127.0.0.1;dbname=foo',
+//            'username' => 'foo',
+//            'password' => 'foo',
+//            'charset' => 'utf8',
+//        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+//                'event/json/<id:\d+>' => 'event/json'
+                '<controller>/<action>/<id:\d+>' => '<controller>/<action>',
             ],
         ],
     ],

@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "event".
@@ -14,8 +13,6 @@ use yii\db\ActiveQuery;
  * @property string $end_at
  * @property string $created_at
  * @property string $updated_at
- * @property int $author_id
- * @property User $author
  */
 class Event extends \yii\db\ActiveRecord
 {
@@ -33,9 +30,11 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['start_at', 'end_at', 'created_at', 'updated_at', 'author_id'], 'safe'],
+            [['id', 'name'], 'required'],
+            [['id'], 'integer'],
+            [['start_at', 'end_at', 'created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
+            [['id'], 'unique'],
         ];
     }
 
@@ -46,24 +45,11 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Имя',
-            'start_at' => 'Начало',
-            'end_at' => 'Конец',
-            'created_at' => 'Создано',
-            'updated_at' => 'Отредактировано',
-            'author_id' => 'Автор',
+            'name' => 'Name',
+            'start_at' => 'Start At',
+            'end_at' => 'End At',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
-
-//    public function doCoolThing(): void
-//    {
-//        \var_dump('HELLO!');
-//    }
-    /**
-     * @return ActiveQuery
-     */
-public function getAuthor(): ActiveQuery
-{
-    return $this->hasOne(User::class, ['id' => 'author_id']);
-}
 }

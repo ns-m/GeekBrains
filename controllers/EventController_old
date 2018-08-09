@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Event;
-use app\models\EventSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,11 +35,11 @@ class EventController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new EventSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Event::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -52,12 +52,6 @@ class EventController extends Controller
      */
     public function actionView($id)
     {
-        $event = $this->findModel($id);
-//        $event = Event::find()->andWhere(['event.id' => $id])->joinWith(['author'])->one();
-
-        $author = $event->author;
-        $event = $author->event;
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
