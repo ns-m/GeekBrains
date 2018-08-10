@@ -36,6 +36,7 @@ class Event extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['start_at', 'end_at', 'created_at', 'updated_at', 'author_id'], 'safe'],
             [['name'], 'string', 'max' => 255],
+            ['author_id', 'integer'],
         ];
     }
 
@@ -46,7 +47,7 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Имя',
+            'name' => 'Имя События',
             'start_at' => 'Начало',
             'end_at' => 'Конец',
             'created_at' => 'Создано',
@@ -64,6 +65,7 @@ class Event extends \yii\db\ActiveRecord
      */
 public function getAuthor(): ActiveQuery
 {
-    return $this->hasOne(User::class, ['id' => 'author_id']);
+    $this->author;
+    return $this->hasMany(User::class, ['id' => 'author_id']);
 }
 }

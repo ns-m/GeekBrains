@@ -27,11 +27,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+//            [
+//                    'value' => 'created_at',
+//                    'format' => 'date',
+//            ],
+//            [
+//                    'value' => 'start_at',
+//                    'format' => 'datetime',
+//             ],
+//            [
+//                'value' => 'end_at',
+//                'format' => 'datetime',
+//            ],
+//            [
+//                'value' => 'updated_at',
+//                'format' => [
+//                        'date',
+//                        'php:d.m.Y H:i:s',
+//                ]
+//            ],
+//            'author.username',
+            //'updated_at',
             'start_at',
             'end_at',
-            'created_at',
-            //'updated_at',
-            //'author_id',
+            'author_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

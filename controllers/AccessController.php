@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Event;
-use app\models\EventSearch;
+use app\models\Access;
+use app\models\AccessSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EventController implements the CRUD actions for Event model.
+ * AccessController implements the CRUD actions for Access model.
  */
-class EventController extends Controller
+class AccessController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class EventController extends Controller
     }
 
     /**
-     * Lists all Event models.
+     * Lists all Access models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EventSearch();
+        $searchModel = new AccessSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,47 +45,38 @@ class EventController extends Controller
     }
 
     /**
-     * Displays a single Event model.
+     * Displays a single Access model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $event = $this->findModel($id);
-//        $event = Event::find()->andWhere(['event.id' => $id])->joinWith(['author'])->one();
-
-        $author = $event->author;
-        $event = $author->event;
-
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Event model.
+     * Creates a new Access model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Event();
+        $model = new Access();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-//        $viewModel = new EventCreateView();
-
-        return $this->render('create',[
+        return $this->render('create', [
             'model' => $model,
-        //            'viewModel' => $viewModel,
         ]);
     }
 
     /**
-     * Updates an existing Event model.
+     * Updates an existing Access model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -105,7 +96,7 @@ class EventController extends Controller
     }
 
     /**
-     * Deletes an existing Event model.
+     * Deletes an existing Access model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -119,15 +110,15 @@ class EventController extends Controller
     }
 
     /**
-     * Finds the Event model based on its primary key value.
+     * Finds the Access model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Event the loaded model
+     * @return Access the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Event::findOne($id)) !== null) {
+        if (($model = Access::findOne($id)) !== null) {
             return $model;
         }
 
