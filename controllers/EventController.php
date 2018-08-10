@@ -52,6 +52,10 @@ class EventController extends Controller
      */
     public function actionIndex()
     {
+        $db = \Yii::$app->getDb();
+
+        $result = $db->createCommand('SELECT * FROM event')->cache(3600) ->queryAll();
+
         $searchModel = new EventSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

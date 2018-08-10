@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$redis = require __DIR__ . '/redis.php';
 
 $config = [
     'id' => 'basic-console',
@@ -13,8 +14,11 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+//        'cache' => [
+//            'class' => 'yii\caching\FileCache',
+//        ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => Cache::class,
         ],
         'log' => [
             'targets' => [
@@ -24,6 +28,7 @@ $config = [
                 ],
             ],
         ],
+        'redis' => $redis,
         'db' => $db,
     ],
     'params' => $params,

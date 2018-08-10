@@ -25,6 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <?php if ($this->beginCache('event-view-time', ['duration'=>10])):?>
+    <div>
+        Current time:
+        <?=date('d.m.Y H:i:s');?>
+    </div>
+    <?=$this->endCache();?>
+    <?php endif;?>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

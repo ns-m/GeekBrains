@@ -21,6 +21,16 @@ use app\models\User;
     <?= $form->field($model, 'start_at')->textInput(['type' => 'date']) ?>
 
     <?= $form->field($model, 'end_at')->textInput(['type' => 'date']) ?>
+<!--    --><?//= $form->field($model, 'start_at')->widget(DatePicker::className(), [
+//        'options' => [
+//            'value' => Yii::$app->formatter->asDate($model->start_at),
+//        ],
+//        'pluginOptions' => [
+//            'autoclose' => TRUE,
+//            'format'    => 'dd-mm-yyyy',
+//            'startDate' => 'd',
+//        ]
+//    ]) ?>
 
 <!--    --><?//= $form->field($model, 'author_id')->dropDownList([
 //    0 => 'Ничего',

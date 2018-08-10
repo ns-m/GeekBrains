@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\caching\DbDependency;
 use yii\data\ActiveDataProvider;
 use app\models\Event;
 
@@ -44,6 +45,11 @@ class EventSearch extends Event
         $query = Event::find();
 
         // add conditions that should always apply here
+//        $dependency = new DbDependency([
+//            'sql' => 'SELECT COUNT(id) FROM event',
+//        ]);
+//
+//        $query->cache(3600, $dependency);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$redis = require __DIR__ . '/redis.php';
 
 $config = [
     'id' => 'basic',
@@ -20,7 +21,11 @@ $config = [
             'cookieValidationKey' => 'IwFIFi6KTGoYA65f2sflJpH85_Osae7f',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+//            'class' => 'yii\caching\FileCache',
+            'class' => \yii\redis\Cache::class,
+        ],
+        'cache_dummy' => [
+            'class' => \yii\caching\DummyCache::class,
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -45,6 +50,8 @@ $config = [
                 ],
             ],
         ],
+        'redis' => $redis,
+
         'db' => $db,
 //        'db_foo'=>[
 //            'class' => 'yii\db\Connection',
@@ -60,6 +67,11 @@ $config = [
 //                'event/json/<id:\d+>' => 'event/json'
                 '<controller>/<action>/<id:\d+>' => '<controller>/<action>',
             ],
+        ],
+        'formatter' => [
+            'dateFormat'     => 'php:d-m-Y',
+            'datetimeFormat' => 'php:d-m-Y в H:i:s',
+            'timeFormat'     => 'php:H:i:s',
         ],
     ],
     'params' => $params,
