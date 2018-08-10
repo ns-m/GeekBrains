@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Access;
 use Yii;
 use app\models\Event;
 use app\models\EventSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -26,6 +29,20 @@ class EventController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['index', 'create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'], //users
+                    ],
+                    [
+                        'allow' => false,
+                        'roles' => ['?'], //quest
+                    ],
+                ],
+            ]
         ];
     }
 
@@ -55,6 +72,10 @@ class EventController extends Controller
         $event = $this->findModel($id);
 //        $event = Event::find()->andWhere(['event.id' => $id])->joinWith(['author'])->one();
 
+        if (!$this->checkAccess($event)){
+            throw new ForbiddenHttpException('Access is denied');
+        }
+
         $author = $event->author;
         $event = $author->event;
 
@@ -78,9 +99,9 @@ class EventController extends Controller
 
 //        $viewModel = new EventCreateView();
 
-        return $this->render('create',[
+        return $this->render('create', [
             'model' => $model,
-        //            'viewModel' => $viewModel,
+            //            'viewModel' => $viewModel,
         ]);
     }
 
@@ -94,6 +115,10 @@ class EventController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        if (!$this->checkWriteAccess($model)){
+            throw new ForbiddenHttpException();
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -132,5 +157,22 @@ class EventController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function checkAccess(Event $event): bool
+    {
+        $currentUid = \Yii::$app->getUser()->getId();
+
+        if ($event->author_id == $currentUid) {
+            return true;
+        } elseif (Access::find()->andWhere(['event_id' => $event->id, 'user_id' => $currentUid])->count()) {
+            return true;
+        }
+        return false;
+    }
+
+    protected function checkWriteAccess(Event $event): bool
+    {
+        return $event->author_id == \Yii::$app->getUser()->getId();
     }
 }
