@@ -7,6 +7,7 @@ use Yii;
 use app\models\Event;
 use app\models\EventSearch;
 use yii\filters\AccessControl;
+use yii\filters\HttpCache;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -42,6 +43,17 @@ class EventController extends Controller
                         'roles' => ['?'], //quest
                     ],
                 ],
+            ],
+            'cache' => [
+                'class' => HttpCache::class,
+                'only' => ['view'],
+                'lastModified' => function()
+                {
+                    $id = (int) \Yii::$app->getRequest()->getQueryParam('id');
+                    $model = $this->findModel($id);
+
+                    return \strtotime($model->created_at);
+                }
             ]
         ];
     }

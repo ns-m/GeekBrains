@@ -1,5 +1,7 @@
 <?php
 
+use yii\redis\Cache;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $redis = require __DIR__ . '/redis.php';
@@ -22,7 +24,7 @@ $config = [
         ],
         'cache' => [
 //            'class' => 'yii\caching\FileCache',
-            'class' => \yii\redis\Cache::class,
+            'class' => Cache::class,
         ],
         'cache_dummy' => [
             'class' => \yii\caching\DummyCache::class,

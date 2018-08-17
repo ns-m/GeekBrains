@@ -7,6 +7,7 @@ use yii\base\Model;
 use yii\caching\DbDependency;
 use yii\data\ActiveDataProvider;
 use app\models\Event;
+use app\models\Access;
 
 /**
  * EventSearch represents the model behind the search form of `app\models\Event`.
@@ -62,6 +63,25 @@ class EventSearch extends Event
             // $query->where('0=1');
             return $dataProvider;
         }
+
+//        $command = Event::find()
+//            ->select('COUNT(*)')
+//            ->joinWith('access')
+//            ->andWhere(
+//                [
+//                    'or',
+//                    ['author_id' => \Yii::$app->user->getId()],
+//                    ['access.user_id' => \Yii::$app->user->getId()],
+//                ]
+//            )
+//            ->createCommand();
+//
+//        $dependency = new DbDependency([
+//            'sql => $command->getRawSql()',
+//        ]);
+
+        //$query->cache(30*24*60*60, $dependency);
+        $query->cache(30*24*60*60);
 
         // grid filtering conditions
         $query->andFilterWhere([
