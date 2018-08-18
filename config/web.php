@@ -23,7 +23,6 @@ $config = [
             'cookieValidationKey' => 'IwFIFi6KTGoYA65f2sflJpH85_Osae7f',
         ],
         'cache' => [
-//            'class' => 'yii\caching\FileCache',
             'class' => Cache::class,
         ],
         'cache_dummy' => [
@@ -55,18 +54,10 @@ $config = [
         'redis' => $redis,
 
         'db' => $db,
-//        'db_foo'=>[
-//            'class' => 'yii\db\Connection',
-//            'dsn' => 'mysql:host=127.0.0.1;dbname=foo',
-//            'username' => 'foo',
-//            'password' => 'foo',
-//            'charset' => 'utf8',
-//        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                'event/json/<id:\d+>' => 'event/json'
                 '<controller>/<action>/<id:\d+>' => '<controller>/<action>',
             ],
         ],
@@ -74,6 +65,11 @@ $config = [
             'dateFormat'     => 'php:d-m-Y',
             'datetimeFormat' => 'php:d-m-Y в H:i:s',
             'timeFormat'     => 'php:H:i:s',
+        ],
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => app\modules\admin\Module::class,
         ],
     ],
     'params' => $params,

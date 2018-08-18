@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3ff4ab1438069bdcaaa576e6bf43fe6b",
+    "content-hash": "2619ed204ea6076e90dc9067b4c31a30",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1737,16 +1737,16 @@
         },
         {
             "name": "kartik-v/yii2-widgets",
-            "version": "v3.4.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widgets.git",
-                "reference": "f435d5e96c4848844bdfa9cee58249ccfb3e2dd2"
+                "reference": "24d3a3942a5943233d912b3adc06b3beae3dd076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/f435d5e96c4848844bdfa9cee58249ccfb3e2dd2",
-                "reference": "f435d5e96c4848844bdfa9cee58249ccfb3e2dd2",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/24d3a3942a5943233d912b3adc06b3beae3dd076",
+                "reference": "24d3a3942a5943233d912b3adc06b3beae3dd076",
                 "shasum": ""
             },
             "require": {
@@ -1795,7 +1795,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2014-11-09T19:54:17+00:00"
+            "time": "2015-12-05T10:37:16+00:00"
         },
         {
             "name": "nkovacs/yii2-datetimepicker",
@@ -1893,6 +1893,45 @@
                 "yii"
             ],
             "time": "2017-01-11T14:05:47+00:00"
+        },
+        {
+            "name": "skobka/command-pattern",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Doka-NT/command-pattern.git",
+                "reference": "393efd8671d74d9f2b658177f4e12f94aa807be5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Doka-NT/command-pattern/zipball/393efd8671d74d9f2b658177f4e12f94aa807be5",
+                "reference": "393efd8671d74d9f2b658177f4e12f94aa807be5",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.4@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "skobka\\CommandPattern\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Soshnikov Artem",
+                    "email": "213036@skobka.com"
+                }
+            ],
+            "description": "The usefull set of interface to interact with command design pattern",
+            "support": {
+                "source": "https://github.com/Doka-NT/command-pattern/tree/master",
+                "issues": "https://github.com/Doka-NT/command-pattern/issues"
+            },
+            "time": "2018-08-07T05:30:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4861,8 +4900,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "skobka/command-pattern": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

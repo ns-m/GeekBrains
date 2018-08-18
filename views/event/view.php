@@ -46,4 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+    <?=\kmv\foobar\AutoloadExample::widget([
+            'db' => \Yii::$app->db,
+    ]);?>
+
 </div>

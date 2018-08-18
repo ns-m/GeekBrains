@@ -10,6 +10,9 @@ use yii\grid\GridView;
 $this->title = 'Events';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 <div class="event-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -27,27 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-//            [
-//                    'value' => 'created_at',
-//                    'format' => 'date',
-//            ],
-//            [
-//                    'value' => 'start_at',
-//                    'format' => 'datetime',
-//             ],
-//            [
-//                'value' => 'end_at',
-//                'format' => 'datetime',
-//            ],
-//            [
-//                'value' => 'updated_at',
-//                'format' => [
-//                        'date',
-//                        'php:d.m.Y H:i:s',
-//                ]
-//            ],
-//            'author.username',
-            //'updated_at',
             'start_at',
             'end_at',
             'author_id',

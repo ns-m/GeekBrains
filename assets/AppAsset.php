@@ -6,7 +6,8 @@
  */
 
 namespace app\assets;
-
+use app\modules\admin\assets\AdminLtePluginAsset;
+use kmv\foobar\FoobarAssets;
 use yii\web\AssetBundle;
 
 /**
