@@ -66,6 +66,11 @@ $config = [
             'datetimeFormat' => 'php:d-m-Y в H:i:s',
             'timeFormat'     => 'php:H:i:s',
         ],
+        'foo' => [
+            'class' => \app\components\FooComponent::class,
+            'title' => 'foo',
+            'body' => 'bar',
+        ],
     ],
     'modules' => [
         'admin' => [

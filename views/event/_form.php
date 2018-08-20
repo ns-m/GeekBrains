@@ -42,6 +42,12 @@ use app\models\User;
     <?= $form->field($model, 'author_id')->dropDownList(
             User::find()->indexBy('id')->select('name', 'id')->column()
     );?>
+<!--    --><?//= $form->field($model, 'users')->widget(Select2::class, [
+//            'data' => $viewModel->getUserOptions(),
+//            'options' => [
+//                    'multiple' => true,
+//            ],
+//]);?>
 
 <!--    --><?//= $form->field($model, 'created_at')->textInput() ?>
 <!---->
