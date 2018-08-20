@@ -1,5 +1,4 @@
 <?php
-//lesson8
 use yii\db\Migration;
 
 /**

@@ -1,5 +1,5 @@
 <?php
-//lesson8
+
 namespace app\components;
 
 

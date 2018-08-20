@@ -1,5 +1,5 @@
 <?php
-//lesson8
+
 use yii\redis\Cache;
 
 $params = require __DIR__ . '/params.php';

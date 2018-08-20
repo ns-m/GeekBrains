@@ -1,1 +1,1 @@
-* * * /2 0 D:\OSPanel\domains\yii2.0720\yii log-rotate/access > D:\OSPanel\domains\yii2.0720\yii\runtime\cron_log
+* * * 0 0 D:\OSPanel\domains\yii2.0720\yii log-rotate/access > D:\OSPanel\domains\yii2.0720\yii\runtime\cron_log
